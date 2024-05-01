@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include('./partials/head') %>
+
+        <title>Blog</title>
+</head>
+
+<body>
+    <%-include('./partials/nav') %>
+
+    <div class="container mt-4">
+        <h1><%= blog.titel %></h1>
+        <img class="mt-2" src="<%= blog.coverImageURL %>" width="300px" alt="Image Not Found">
+        <pre><%= blog.body %></pre>
+    </div>
+
+    <div class="container mt-2">
+        <img src="<%= blog.createBy.profileImageURL %>" alt="Error" width="50px"> 
+        <%= blog.createBy.fullName %>
+    </div>
+
+    <div class="container mt-4">
+        <h4 class="text-bold">Comments(<%= comments.length %>)</h4>
+        
+        <% if (locals.user) { %>
+         
+            <form action="/blog/comment/<%= blog._id %>" method="post">
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="content" placeholder="Write Your Comment">
+                    <button type="submit" class="btn btn-sm btn-primary  mt-2">Add</button>
+                </div>
+            </form>
+
+        <% } %>
+
+
+        <div class="mt-1">
+            <% comments.forEach(comment => { %>
+             <div>
+                <img src="<%= comment.createdBy.profileImageURL %>" alt="Error" width="50px">
+                <%= comment.createdBy.fullName %>
+                <pre><%= comment.content %></pre>
+             </div>
+            <% }) %>
+        </div>
+
+    </div>
+
+    
+
+    <%-include('./partials/scripts') %>
+</body>
+
+</html>  

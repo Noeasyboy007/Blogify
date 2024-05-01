@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include('./partials/head') %>
+
+        <title>Add New Blog</title>
+</head>
+
+<body>
+    <%-include('./partials/nav') %>
+
+        <div class="container mt-3">
+
+            <form action="/blog" method="post" enctype="multipart/form-data">
+
+
+                <div class="mb-3">
+                    <label for="coverImage">Cover Image</label>
+                    <input type="file" name="coverImage" class="form-control" id="coverImage" aria-describedby="coverImage
+                    "></input>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label for="titel" class="form-label">Titel</label>
+                    <input type="text" class="form-control" id="titel" name="titel" aria-describedby="titel">
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label for="body">Body</label>
+                    <textarea name="body" class="form-control" placeholder="Leave a comment here" id="body"></textarea>
+                </div>
+
+
+
+                <button class="btn btn-info">Submit</button>
+
+            </form>
+
+        </div>
+
+        <%-include('./partials/scripts') %>
+
+</body>
+
+</html>
